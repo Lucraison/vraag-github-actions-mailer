@@ -2,16 +2,11 @@ on:
   push:
     branches:
     - main
+    - release/*
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: WHERE IS THE FILE
-        run: ls
-      - name: where goes cd ..
-        run: cd ..
-      - name: WHERE IS THE FILE again
-        run: ls
       - name: Count lines
         run: wc -l helloworld.js > /tmp/linesofcode.txt
       - uses: actions/checkout@v2
