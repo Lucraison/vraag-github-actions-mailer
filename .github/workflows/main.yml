@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Count lines
-        run: wc -l helloworld.js > linesofcode.txt
+        run: ls 
       - uses: actions/checkout@v2
       - name: Send email
         uses: devellany/send-mail@v1.0.2
