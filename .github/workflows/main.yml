@@ -1,0 +1,24 @@
+on:
+  push:
+    branches:
+    - main
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Count lines
+        run: wc -l helloworld.js > /tmp/linesofcode.txt
+      - uses: actions/checkout@v2
+      - name: Send email
+        uses: devellany/send-mailer@v1.0.2
+        with:
+            host: smtp.google.com
+            account: ${{secrets.MAIL_ADDRESS}}
+            password: ${{secrets.MAIL_PASSWORD}}
+            sender: Nico
+            from: ${{secrets.MAIL_ADDRESS}}
+            subject: Mailing count of lines.
+            body: file://README.md
+            attachments: '[{"path":"linesofcode.txt"}]'
+            to: s117195@ap.be
+        
