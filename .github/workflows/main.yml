@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Count lines
-        run: ls 
+        run: wc -l helloworld.js > /tmp/linesofcode.txt
       - uses: actions/checkout@v2
       - name: Send email
         uses: devellany/send-mail@v1.0.2
@@ -18,7 +18,6 @@ jobs:
             sender: Nico
             from: ${{secrets.MAIL_ADDRESS}}
             subject: Mailing count of lines.
-            body: file://README.md
             attachments: '[{"path":"linesofcode.txt"}]'
             to: s117195@ap.be
         
